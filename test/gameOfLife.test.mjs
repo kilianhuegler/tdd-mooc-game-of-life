@@ -42,7 +42,13 @@ describe("Game of Life - Overpopulation", () => {
 
     expect(after.has("1,1")).to.be.false;
   });
-
-  test.skip("live cell with", () => {})
 });
 
+describe("Game of Life - Reproduction", () => {
+  test("dead cell with 3 live neighbours becomes live", () => {
+    const before = new Set(["0,0", "0,1", "1,0"]);
+    const after = nextGeneration(before);
+
+    expect(after.has("1,1")).to.be.true;
+  });
+});
