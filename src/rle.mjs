@@ -59,6 +59,8 @@ export function toRle(liveCells) {
     for (let x = 0; x <= maxX; x++) {
       if (liveCells.has(`${x},${y}`)) {
         row += "o";
+      } else {
+        row += "b";
       }
     }
     rows.push(row);
