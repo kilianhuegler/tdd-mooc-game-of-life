@@ -53,4 +53,11 @@ describe("RLE Parser", () => {
 
     expect(parseRle(rle)).to.deep.equal(new Set(["0,0"]));
   });
+
+  test("rle pattern with multiple lines", () => {
+    const rle = "x = 4, y = 1\noo\noo!";
+
+    expect(parseRle(rle)).to.deep.equal(new Set(["0,0", "1,0", "2,0", "3,0"]));
+    }
+  )
 });

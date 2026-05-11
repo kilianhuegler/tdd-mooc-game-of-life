@@ -2,12 +2,11 @@ export function parseRle(input) {
   const liveCells = new Set();
   const lines = input.split("\n");
 
-  let patternData;
+  let patternData = "";
   for (const line of lines) {
     if (line.startsWith("#")) continue;
     if (line.includes("=")) continue;
-    patternData = line;
-    break;
+    patternData += line;
   }
 
   let x = 0;
