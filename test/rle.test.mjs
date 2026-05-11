@@ -14,4 +14,10 @@ describe("RLE Parser", () => {
 
     expect(parseRle(rle)).to.deep.equal(new Set(["0,0", "1,0", "2,0"]));
   })
+
+  test("dead cells", () => {
+    const rle = "x = 3, y = 1\nbob!";
+
+    expect(parseRle(rle)).to.deep.equal(new Set(["1,0"]));
+  });
 });

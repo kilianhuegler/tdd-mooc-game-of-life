@@ -7,6 +7,8 @@ export function parseRle(input) {
     if (line === "o") {
       liveCells.add(`${x},0`);
       x++;
+    } else if (line === "b") {
+      x++;
     }
   }
 
