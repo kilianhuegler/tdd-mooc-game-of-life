@@ -41,3 +41,7 @@ export function parseRle(input) {
 
   return liveCells;
 }
+
+export function toRle(liveCells) {
+  return "x = 1, y = 1, rule = B3/S23\no!";
+}

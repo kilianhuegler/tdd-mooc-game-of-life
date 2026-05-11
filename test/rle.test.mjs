@@ -1,6 +1,6 @@
 import { describe, test } from "vitest";
 import { expect } from "chai";
-import { parseRle } from "../src/rle.mjs";
+import { parseRle, toRle } from "../src/rle.mjs";
 import { readFileSync } from "fs";
 
 function cellsToAscii(cells, widthX, heightY) {
@@ -132,3 +132,11 @@ describe("RLE Parser", () => {
     }
   )
 });
+
+describe("RLE Generator", () => {
+  test("single live cell", () => {
+    const cells = new Set(["0,0"]);
+
+    expect(toRle(cells)).to.equal("x = 1, y = 1, rule = B3/S23\no!");
+  })
+})
