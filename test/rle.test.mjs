@@ -148,7 +148,7 @@ describe("RLE Generator", () => {
   test("two live cells in multiple rows", () => {
     const cells = new Set(["0,0", "1,0", "0,1", "1,1"]);
 
-    expect(toRle(cells)).to.equal("x = 2, y = 2, rule = B3/S23\n2o\n2o!");
+    expect(toRle(cells)).to.equal("x = 2, y = 2, rule = B3/S23\n2o$2o!");
   });
 
   test("dead cells between live cells", () => {

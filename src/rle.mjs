@@ -96,5 +96,5 @@ export function toRle(liveCells) {
     rows.push(compress(row));
   }
 
-  return `x = ${maxX - minX + 1}, y = ${maxY - minY + 1}, rule = B3/S23\n${rows.join("\n")}!`;
+  return `x = ${maxX - minX + 1}, y = ${maxY - minY + 1}, rule = B3/S23\n${rows.join("$")}!`;
 }
