@@ -74,8 +74,7 @@ describe("Game of Life - Reproduction", () => {
     const after = nextGeneration(before);
 
     expect(after.has("1,0")).to.be.false;
-    }
-  )
+  });
 });
 
 describe("Game of Life - Integration test", () => {
