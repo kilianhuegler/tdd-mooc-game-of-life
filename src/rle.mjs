@@ -31,10 +31,10 @@ export function parseRle(input) {
           x++;
         }
       } else if (character === "b") {
-        x++;
+        x += numberLength;
       } else if (character === "$") {
         x = 0;
-        y++;
+        y += numberLength;
       }
     }
   }
