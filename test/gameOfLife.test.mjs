@@ -19,7 +19,7 @@ describe("Game of Life - Underpopulation", () => {
   });
 });
 
-describe("Game of Life -Survival", () => {
+describe("Game of Life - Survival", () => {
   test("live cell with 2 live neighbours survives", () => {
     const before = new Set(["0,0", "0,1", "0,2"]);
     const after = nextGeneration(before);
@@ -41,6 +41,27 @@ describe("Game of Life - Overpopulation", () => {
     const after = nextGeneration(before);
 
     expect(after.has("1,1")).to.be.false;
+  });
+
+  test("live cell with 8 live neighbours dies", () => {
+    const before = new Set([
+      "0,0", "1,0", "2,0",
+      "0,1", "1,1", "2,1",
+      "0,2", "1,2", "2,2",
+    ]);
+    const after = nextGeneration(before);
+
+    expect(after.has("1,1")).to.be.false;
+
+    expect(after.has("1,0")).to.be.false;
+    expect(after.has("0,1")).to.be.false;
+    expect(after.has("2,1")).to.be.false;
+    expect(after.has("1,2")).to.be.false;
+
+    expect(after.has("0,0")).to.be.true;
+    expect(after.has("2,0")).to.be.true;
+    expect(after.has("0,2")).to.be.true;
+    expect(after.has("2,2")).to.be.true;
   });
 });
 
