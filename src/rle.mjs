@@ -101,6 +101,6 @@ export function toRle(liveCells) {
     }
   }
 
-  const patternData = rows.join("$").replace(/\${2,}/g, (match) => match.length +"$");
+  const patternData = rows.join("$").replace(/\${2,}/g, (match) => match.length + "$");
   return `x = ${maxX - minX + 1}, y = ${maxY - minY + 1}, rule = B3/S23\n${patternData}!`;
 }
