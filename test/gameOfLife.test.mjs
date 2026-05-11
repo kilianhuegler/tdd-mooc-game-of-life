@@ -68,6 +68,14 @@ describe("Game of Life - Reproduction", () => {
 
     expect(after.has("1,1")).to.be.true;
   });
+
+  test("dead cell with 2 live neighbours stays dead", () => {
+    const before = new Set(["0,0", "0,1"]);
+    const after = nextGeneration(before);
+
+    expect(after.has("1,0")).to.be.false;
+    }
+  )
 });
 
 describe("Game of Life - Integration test", () => {
