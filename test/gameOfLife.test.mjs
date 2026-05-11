@@ -34,3 +34,15 @@ describe("Game of Life -Survival", () => {
     expect(after.has("0,0")).to.be.true;
   });
 });
+
+describe("Game of Life - Overpopulation", () => {
+  test("live cell with 4 live neighbours dies", () => {
+    const before = new Set(["1,0", "0,1", "1,1", "2,1", "1,2"]);
+    const after = nextGeneration(before);
+
+    expect(after.has("1,1")).to.be.false;
+  });
+
+  test.skip("live cell with", () => {})
+});
+
