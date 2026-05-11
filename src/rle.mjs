@@ -43,5 +43,26 @@ export function parseRle(input) {
 }
 
 export function toRle(liveCells) {
-  return "x = 1, y = 1, rule = B3/S23\no!";
+  let maxX = 0;
+  let maxY = 0;
+
+  for (const cell of liveCells) {
+    const [x, y] = cell.split(",").map(Number);
+    if (x > maxX) maxX = x;
+    if (y > maxY) maxY = y;
+  }
+
+  const rows = [];
+
+  for (let y = 0; y <= maxY; y++) {
+    let row = "";
+    for (let x = 0; x <= maxX; x++) {
+      if (liveCells.has(`${x},${y}`)) {
+        row += "o";
+      }
+    }
+    rows.push(row);
+  }
+
+  return `x = ${maxX + 1}, y = ${maxY + 1}, rule = B3/S23\n${rows.join("\n")}!`;
 }

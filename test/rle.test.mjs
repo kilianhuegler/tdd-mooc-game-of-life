@@ -139,4 +139,16 @@ describe("RLE Generator", () => {
 
     expect(toRle(cells)).to.equal("x = 1, y = 1, rule = B3/S23\no!");
   })
+
+  test("two live cells in one row", () => {
+    const cells = new Set(["0,0", "1,0"]);
+
+    expect(toRle(cells)).to.equal("x = 2, y = 1, rule = B3/S23\noo!");
+  })
+
+  test("two live cells in multiple rows", () => {
+    const cells = new Set(["0,0", "1,0", "0,1", "1,1"]);
+
+    expect(toRle(cells)).to.equal("x = 2, y = 2, rule = B3/S23\noo\noo!");
+  });
 })
