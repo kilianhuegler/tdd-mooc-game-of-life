@@ -1,12 +1,20 @@
 export function parseRle(input) {
   const liveCells = new Set();
-  const line = input.split("\n")[1];
+  const lines = input.split("\n");
+
+  let patternData;
+  for (const line of lines) {
+    if (line.startsWith("#")) continue;
+    if (line.includes("=")) continue;
+    patternData = line;
+    break;
+  }
 
   let x = 0;
   let y = 0;
   let number = "";
 
-  for (const character of line) {
+  for (const character of patternData) {
     if (character >= "0" && character <= "9") {
       number += character;
     } else {
