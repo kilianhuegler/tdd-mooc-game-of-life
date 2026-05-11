@@ -155,11 +155,11 @@ describe("RLE Generator", () => {
     const cells = new Set(["0,0", "2,0"]);
 
     expect(toRle(cells)).to.equal("x = 3, y = 1, rule = B3/S23\nobo!");
-  })
+  });
 
   test("multiple consecutive live cells", () => {
     const cells = new Set(["0,0", "1,0", "2,0", "3,0"]);
 
     expect(toRle(cells)).to.equal("x = 4, y = 1, rule = B3/S23\n4o!");
-  })
+  });
 });
