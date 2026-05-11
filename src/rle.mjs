@@ -1,14 +1,18 @@
 export function parseRle(input) {
   const liveCells = new Set();
-  const lines = input.split("\n")[1];
+  const line = input.split("\n")[1];
 
   let x = 0;
-  for (const line of lines) {
-    if (line === "o") {
-      liveCells.add(`${x},0`);
+  let y = 0;
+  for (const character of line) {
+    if (character === "o") {
+      liveCells.add(`${x},${y}`);
       x++;
-    } else if (line === "b") {
+    } else if (character === "b") {
       x++;
+    } else if (character === "$") {
+      x = 0;
+      y++;
     }
   }
 
