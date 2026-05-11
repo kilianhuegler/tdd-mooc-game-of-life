@@ -42,6 +42,32 @@ export function parseRle(input) {
   return liveCells;
 }
 
+function compress(row) {
+  let result = "";
+  let count = 1;
+
+  for (let i = 1; i < row.length; i++) {
+    if (row[i] === row[i - 1]) {
+      count++;
+    } else {
+      if (count === 1) {
+        result += row[i - 1];
+      } else {
+        result += count + row[i - 1];
+      }
+      count = 1;
+    }
+  }
+
+  if (count === 1) {
+    result += row[row.length - 1];
+  } else {
+    result += count + row[row.length - 1];
+  }
+
+  return result;
+}
+
 export function toRle(liveCells) {
   let maxX = 0;
   let maxY = 0;
@@ -63,7 +89,7 @@ export function toRle(liveCells) {
         row += "b";
       }
     }
-    rows.push(row);
+    rows.push(compress(row));
   }
 
   return `x = ${maxX + 1}, y = ${maxY + 1}, rule = B3/S23\n${rows.join("\n")}!`;

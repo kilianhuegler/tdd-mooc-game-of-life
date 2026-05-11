@@ -142,18 +142,24 @@ describe("RLE Generator", () => {
   test("two live cells in one row", () => {
     const cells = new Set(["0,0", "1,0"]);
 
-    expect(toRle(cells)).to.equal("x = 2, y = 1, rule = B3/S23\noo!");
+    expect(toRle(cells)).to.equal("x = 2, y = 1, rule = B3/S23\n2o!");
   });
 
   test("two live cells in multiple rows", () => {
     const cells = new Set(["0,0", "1,0", "0,1", "1,1"]);
 
-    expect(toRle(cells)).to.equal("x = 2, y = 2, rule = B3/S23\noo\noo!");
+    expect(toRle(cells)).to.equal("x = 2, y = 2, rule = B3/S23\n2o\n2o!");
   });
 
   test("dead cells between live cells", () => {
     const cells = new Set(["0,0", "2,0"]);
 
     expect(toRle(cells)).to.equal("x = 3, y = 1, rule = B3/S23\nobo!");
+  })
+
+  test("multiple consecutive live cells", () => {
+    const cells = new Set(["0,0", "1,0", "2,0", "3,0"]);
+
+    expect(toRle(cells)).to.equal("x = 4, y = 1, rule = B3/S23\n4o!");
   })
 });
