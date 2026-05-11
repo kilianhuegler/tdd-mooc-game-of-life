@@ -69,20 +69,24 @@ function compress(row) {
 }
 
 export function toRle(liveCells) {
-  let maxX = 0;
-  let maxY = 0;
+  let minX = Infinity;
+  let maxX = -Infinity;
+  let minY = Infinity;
+  let maxY = -Infinity;
 
   for (const cell of liveCells) {
     const [x, y] = cell.split(",").map(Number);
+    if (x < minX) minX = x;
     if (x > maxX) maxX = x;
+    if (y < minY) minY = y;
     if (y > maxY) maxY = y;
   }
 
   const rows = [];
 
-  for (let y = 0; y <= maxY; y++) {
+  for (let y = minY; y <= maxY; y++) {
     let row = "";
-    for (let x = 0; x <= maxX; x++) {
+    for (let x = minX; x <= maxX; x++) {
       if (liveCells.has(`${x},${y}`)) {
         row += "o";
       } else {
@@ -92,5 +96,5 @@ export function toRle(liveCells) {
     rows.push(compress(row));
   }
 
-  return `x = ${maxX + 1}, y = ${maxY + 1}, rule = B3/S23\n${rows.join("\n")}!`;
+  return `x = ${maxX - minX + 1}, y = ${maxY - minY + 1}, rule = B3/S23\n${rows.join("\n")}!`;
 }

@@ -1,6 +1,10 @@
 import { parseRle, toRle } from "./rle.mjs";
+import { nextGeneration} from "./gameOfLife.mjs";
 
 export function cliSimulate(input, generation) {
-  const cells = parseRle(input);
-  return toRle(cells, generation);
+  let cells = parseRle(input);
+  for (let i = 0; i < generation; i++) {
+    cells = nextGeneration(cells);
+  }
+  return toRle(cells);
 }
