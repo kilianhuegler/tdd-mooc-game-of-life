@@ -44,11 +44,7 @@ describe("Game of Life - Overpopulation", () => {
   });
 
   test("live cell with 8 live neighbours dies", () => {
-    const before = new Set([
-      "0,0", "1,0", "2,0",
-      "0,1", "1,1", "2,1",
-      "0,2", "1,2", "2,2",
-    ]);
+    const before = new Set(["0,0", "1,0", "2,0", "0,1", "1,1", "2,1", "0,2", "1,2", "2,2"]);
     const after = nextGeneration(before);
 
     expect(after.has("1,1")).to.be.false;
@@ -71,5 +67,15 @@ describe("Game of Life - Reproduction", () => {
     const after = nextGeneration(before);
 
     expect(after.has("1,1")).to.be.true;
+  });
+});
+
+describe("Game of Life - Integration test", () => {
+  test("Blinker test", () => {
+    const horizontal = new Set(["0,1", "1,1", "2,1"]);
+    const vertical = new Set(["1,0", "1,1", "1,2"]);
+
+    expect(nextGeneration(horizontal)).to.deep.equal(vertical);
+    expect(nextGeneration(vertical)).to.deep.equal(horizontal);
   });
 });

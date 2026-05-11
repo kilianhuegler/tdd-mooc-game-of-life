@@ -22,7 +22,10 @@ export function nextGeneration(liveCells) {
         neighbour_count++;
       }
     }
-    if (neighbour_count === 2 || neighbour_count === 3) {
+    const cellIsAlive = liveCells.has(cell);
+    if ((neighbour_count === 2 || neighbour_count === 3) && cellIsAlive) {
+      nextGen.add(cell);
+    } else if (!cellIsAlive && neighbour_count === 3) {
       nextGen.add(cell);
     }
   }
