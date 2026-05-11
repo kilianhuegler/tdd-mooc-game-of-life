@@ -25,7 +25,7 @@ describe("Game of Life -Survival", () => {
     const after = nextGeneration(before);
 
     expect(after.has("0,1")).to.be.true;
-  })
+  });
 
   test("live cell with 3 live neighbours survives", () => {
     const before = new Set(["0,0", "0,1", "1,0", "1,1"]);
@@ -33,4 +33,4 @@ describe("Game of Life -Survival", () => {
 
     expect(after.has("0,0")).to.be.true;
   });
-})
+});
