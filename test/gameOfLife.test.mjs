@@ -18,3 +18,12 @@ describe("Game of Life - Underpopulation", () => {
     expect(after.has("0,1")).to.be.false;
   });
 });
+
+describe("Game of Life -Survival", () => {
+  test("live cell with 2 live neighbours survives", () => {
+    const before = new Set(["0,0", "0,1", "0,2"]);
+    const after = nextGeneration(before);
+
+    expect(after.has("0,1")).to.be.true;
+  })
+})
