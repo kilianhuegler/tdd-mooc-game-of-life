@@ -20,4 +20,10 @@ describe("RLE Parser", () => {
 
     expect(parseRle(rle)).to.deep.equal(new Set(["1,0"]));
   });
+
+  test("$ moves to the next line", () => {
+    const rle = "x = 2, y = 2\no$o!";
+
+    expect(parseRle(rle)).to.deep.equal(new Set(["0,0", "1,0"]));
+  })
 });
