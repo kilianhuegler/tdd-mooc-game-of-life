@@ -32,4 +32,17 @@ describe("RLE Parser", () => {
 
     expect(parseRle(rle)).to.deep.equal(new Set(["0,0", "1,0", "0,1", "1,1"]));
   });
+
+  test("read number prefix from pattern multiple rows", () => {
+    const rle = "x = 2, y = 2\n2o$2o!";
+
+    expect(parseRle(rle)).to.deep.equal(new Set(["0,0", "1,0", "0,1", "1,1"]));
+    }
+  )
+
+  test("read number prefix from pattern single row", () => {
+    const rle = "x = 2, y = 1\n2o!";
+
+    expect(parseRle(rle)).to.deep.equal(new Set(["0,0", "1,0"]));
+  });
 });
