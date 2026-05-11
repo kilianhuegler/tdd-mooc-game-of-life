@@ -93,7 +93,12 @@ export function toRle(liveCells) {
         row += "b";
       }
     }
-    rows.push(compress(row));
+    while (row.endsWith("b")) row = row.slice(0, -1);
+    if (row === "") {
+      rows.push("")
+    } else {
+      rows.push(compress(row));
+    }
   }
 
   return `x = ${maxX - minX + 1}, y = ${maxY - minY + 1}, rule = B3/S23\n${rows.join("$")}!`;

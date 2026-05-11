@@ -162,4 +162,10 @@ describe("RLE Generator", () => {
 
     expect(toRle(cells)).to.equal("x = 4, y = 1, rule = B3/S23\n4o!");
   });
+
+  test("trailing dead cells are skipped", () => {
+    const cells = new Set(["0,0", "0,1", "1,1"]);
+
+    expect(toRle(cells)).to.equal("x = 2, y = 2, rule = B3/S23\no$2o!");
+  })
 });
