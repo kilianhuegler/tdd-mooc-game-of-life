@@ -8,11 +8,11 @@ export function nextGeneration(liveCells) {
         continue;
       }
       const [otherX, otherY] = otherCells.split(",").map(Number);
-      if (Math.abs(x - otherX) + Math.abs(y - otherY) <= 1) {
+      if (Math.abs(x - otherX) <= 1 && Math.abs(y - otherY) <= 1) {
         count++;
       }
     }
-    if (count === 2) {
+    if (count === 2 || count === 3) {
       nextGen.add(cell);
     }
   }
