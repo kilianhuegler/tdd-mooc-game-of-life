@@ -167,5 +167,11 @@ describe("RLE Generator", () => {
     const cells = new Set(["0,0", "0,1", "1,1"]);
 
     expect(toRle(cells)).to.equal("x = 2, y = 2, rule = B3/S23\no$2o!");
-  })
+  });
+
+  test("compress empty rows", () => {
+    const cells = new Set(["0,0", "0,3"]);
+
+    expect(toRle(cells)).to.equal("x = 1, y = 4, rule = B3/S23\no3$o!");
+  });
 });

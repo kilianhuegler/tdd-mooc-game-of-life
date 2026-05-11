@@ -95,11 +95,12 @@ export function toRle(liveCells) {
     }
     while (row.endsWith("b")) row = row.slice(0, -1);
     if (row === "") {
-      rows.push("")
+      rows.push("");
     } else {
       rows.push(compress(row));
     }
   }
 
-  return `x = ${maxX - minX + 1}, y = ${maxY - minY + 1}, rule = B3/S23\n${rows.join("$")}!`;
+  const patternData = rows.join("$").replace(/\${2,}/g, (match) => match.length +"$");
+  return `x = ${maxX - minX + 1}, y = ${maxY - minY + 1}, rule = B3/S23\n${patternData}!`;
 }
