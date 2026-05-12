@@ -21,3 +21,11 @@ Run tests continuously
 Code reformat
 
     npm run format
+
+## Usage
+
+    node src/cli.mjs <pattern.rle> <generations>
+
+## Video Link
+
+    https://youtu.be/L5cAhp2S2Rc
